@@ -1,0 +1,135 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollBar;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+class Chatbot extends JFrame
+ {
+	
+	
+    
+    private static final long serialVersionUID = 1L;
+    
+	private JTextArea ca= new JTextArea();
+	private JTextField cf=new JTextField();                                  
+	private JButton b=new JButton();
+    private JLabel l=new JLabel();
+    
+    Chatbot()
+    {
+        
+                                   
+		
+        JFrame f=new JFrame();    
+                                         
+		f.setDefaultCloseOperation(EXIT_ON_CLOSE);                      
+		f.setVisible(true);
+		f.setResizable(false);
+		f.setLayout(null);
+        f.setSize(600,700);
+		f.getContentPane().setBackground(Color.BLACK);
+		f.setTitle("SchoolBot");
+		f.add(ca);
+        f.add(cf);
+        
+        
+		ca.setSize(700,630);
+		ca.setLocation(1, 1);
+        ca.setBackground(Color.BLACK);
+        
+		cf.setSize(500,20);
+        cf.setLocation(2,640);
+        f.add(b);
+
+		l.setText("SEND");
+		b.add(l);
+		b.setSize(400,20);
+        b.setLocation(500,640);
+
+        
+        
+        
+		
+        b.addActionListener( new ActionListener()
+         {
+            public void actionPerformed(ActionEvent e)
+         {   
+				    
+				if(e.getSource()==b) {                           
+                    
+					
+					String text=cf.getText().toLowerCase();
+					ca.setForeground(Color.GREEN);
+					ca.append("You-->  "+text+"\n");
+					cf.setText("");
+					
+                    if(text.contains("hi") || text.contains("hello"))
+                    {                         
+                        replyMeth("Hello, I am a School ChatBot :) How Can I help \n you today?");
+                        
+                    }
+                    else if(text.contains("contact")) 
+                    {
+                        replyMeth("You can call this numbers \n SMART 09123456787 \n Globe 0912386169 \n for landline 1235-123142");
+                        
+					}
+                    else if(text.contains("tuition"))
+                    {
+                        replyMeth("BSIT = 24000 per semester. \n BSCS = 26000 per semester. \n BMMA = 31000 per semester. \n BSCS = 26000 per semester. \n BSCE = 23000 per semester. \n  ");
+                        
+					}
+                    else if(text.contains("discount"))
+                    {
+                        replyMeth("For discount, you can call the school directly for \n better assistance.");
+                        
+					}
+                    else if(text.contains("subjects")) 
+                    {
+                        replyMeth("There are a lot of subjects per semester. For \n better assistance please contact the \n school directly.");
+                        
+                    }
+                    else if(text.contains("thank you")) 
+                    {
+                        replyMeth("You're welcome :)");
+                        
+                    }
+                    else if(text.contains("bye") || text.contains("goodbye")) 
+                    {
+                        replyMeth("Take care.");
+                        
+					}
+					else 
+                        replyMeth("I Can't Understand");
+                        
+					
+				}
+				
+			}
+			
+		});
+		
+	}
+	public void replyMeth(String s) {                          
+		ca.append("ChatBot-->  "+s+"\n");         
+	}
+			
+
+}
+
+
+
+public class ChatBotSchool {                                    
+
+	public static void main(String[] args) {             
+		
+          new Chatbot();                                  
+	}
+
+}
